@@ -33,7 +33,9 @@ export const navbarTheme = responsiveFontSizes(
           root: {
             backgroundColor: "#fff",
             zIndex: 2,
-            position: "relative",
+            position: "sticky",
+            top: 0,
+            left: 0,
           },
         },
       },
