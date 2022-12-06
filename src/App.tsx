@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { FC } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Home } from "./components/home/home";
+import { Layout } from "./components/layout/layout";
 
-function App() {
+const router = createBrowserRouter([
+  {
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+    ],
+  },
+]);
+
+const App: FC = () => {
   return (
-    <div>
-    </div>
+    <>
+      <RouterProvider router={router} />
+    </>
   );
-}
+};
 
 export default App;
