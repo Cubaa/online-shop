@@ -24,7 +24,7 @@ export const desktopMenuTheme = createTheme({
   },
   typography: {
     button: {
-      fontFamily: "'Inter'",
+      fontFamily: "'Inter', sans-serif",
       fontWeight: "700",
       fontSize: "0.8rem",
     },
