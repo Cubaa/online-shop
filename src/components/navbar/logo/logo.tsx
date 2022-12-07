@@ -8,10 +8,20 @@ export const Logo: FC = () => {
   return (
     <Box
       component="img"
-      src="/logo-no-background.svg"
+      sx={{
+        content: {
+          xs: "url(/os-big-logo.svg)",
+          md: "url(/os-small-logo.svg)",
+          lg: "url(/os-big-logo.svg)",
+        },
+        cursor: "pointer",
+      }}
       alt="logo"
-      width="150px"
-      sx={{ cursor: "pointer" }}
+      width={{
+        xs: "150px",
+        md: "50px",
+        lg: "150px",
+      }}
       onClick={() => navigate("/")}
     ></Box>
   );
