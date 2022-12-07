@@ -6,7 +6,6 @@ export const homeTheme = responsiveFontSizes(
       MuiGrid: {
         defaultProps: {
           sx: {
-            minHeight: "calc(100vh - 66.36px)",
             flexDirection: {
               xs: "column",
               sm: "row",
