@@ -1,3 +1,4 @@
+import React, { FC } from "react";
 import {
   Drawer,
   List,
@@ -6,14 +7,12 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-import React, { FC } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/auth.hook";
 import { navMenuGuestItems, navMenuUserItems } from "../navbar/navbar.data";
 import { INavMenuItem } from "../navbar/navbar.interface";
 import { IMobileMenuProps } from "./mobile-menu.interface";
 import { getDrawerTheme } from "./mobile-menu.styled";
-import { SharedLanguageIcon } from "../../shared/language-icon/language-icon";
-import { useAuth } from "../../hooks/auth.hook";
 
 export const MobileMenu: FC<IMobileMenuProps> = (props) => {
   const { mobileOpen } = props;
@@ -65,7 +64,6 @@ export const MobileMenu: FC<IMobileMenuProps> = (props) => {
             </ListItem>
           ) : null}
         </List>
-        <SharedLanguageIcon />
       </Drawer>
     </ThemeProvider>
   );

@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import {
   AppBar,
   Box,
-  Container,
+  Grid,
   IconButton,
   ThemeProvider,
   Toolbar,
@@ -11,38 +11,54 @@ import { INavbarProps } from "./navbar.interface";
 import { DesktopMenu } from "./desktop-menu/desktop-menu";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import CloseIcon from "@mui/icons-material/Close";
-import { navbarTheme } from "./navbar.styled";
 import { Logo } from "./logo/logo";
+import { useAuth } from "../../hooks/auth.hook";
+import { CartMenu } from "../cart-menu/cart-menu";
+import { SharedLanguageIcon } from "../../shared/language-icon/language-icon";
+import { getNavbarTheme } from "./navbar.styled";
 
 export const Navbar: FC<INavbarProps> = (props) => {
-  const { handleDrawerToggle, mobileOpen } = props;
+  const { handleMobileMenuToggle, mobileOpen } = props;
+  const { authenticated } = useAuth();
 
   return (
-    <ThemeProvider theme={navbarTheme}>
-      <AppBar elevation={mobileOpen ? 0 : 1}>
-        <Container component="nav" maxWidth="xl">
+    <ThemeProvider theme={getNavbarTheme(mobileOpen)}>
+      <AppBar>
+        <Grid
+          container
+          component="nav"
+          px={{
+            xs: 2,
+            md: 3,
+          }}
+        >
           <Toolbar disableGutters>
             <Logo />
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: { xs: "flex", md: "none" },
-                justifyContent: "flex-end",
-              }}
-            >
-              <IconButton
-                size="large"
-                aria-label="close or open mobile menu"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleDrawerToggle}
-              >
-                {mobileOpen ? <CloseIcon /> : <MenuOutlinedIcon />}
-              </IconButton>
-            </Box>
             <DesktopMenu />
+            <Grid container item justifyContent="flex-end" width="auto">
+              <Box sx={{ display: "flex" }}>
+                {authenticated ? <CartMenu /> : null}
+                <SharedLanguageIcon />
+              </Box>
+              <Box
+                sx={{
+                  display: { xs: "flex", md: "none" },
+                  justifyContent: "flex-end",
+                }}
+              >
+                <IconButton
+                  size="large"
+                  aria-label="close or open mobile menu"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleMobileMenuToggle}
+                >
+                  {mobileOpen ? <CloseIcon /> : <MenuOutlinedIcon />}
+                </IconButton>
+              </Box>
+            </Grid>
           </Toolbar>
-        </Container>
+        </Grid>
       </AppBar>
     </ThemeProvider>
   );

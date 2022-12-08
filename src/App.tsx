@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home } from "./components/home/home";
 import { Layout } from "./components/layout/layout";
@@ -7,13 +8,20 @@ import { Products } from "./components/products/products";
 import { RenderLogin } from "./components/render-login/render-login";
 import { RequireAuth } from "./components/require-auth/require-auth";
 import { AuthProvider } from "./contexts/auth/auth.context";
+import { ShoppingCartProvider } from "./contexts/shopping-cart/shopping-cart.context";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
     element: (
-      <AuthProvider>
-        <Layout />
-      </AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <ShoppingCartProvider>
+            <Layout />
+          </ShoppingCartProvider>
+        </AuthProvider>
+      </QueryClientProvider>
     ),
     children: [
       {

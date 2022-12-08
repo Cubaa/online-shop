@@ -14,7 +14,7 @@ export const getDrawerTheme = (mobileOpen: boolean): Theme => {
               left: "0",
               zIndex: 1,
               transition: "all .3s cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-              boxShadow: "rgba(33, 35, 38, 0.1) 0px 12px 12px -10px",
+              boxShadow: "rgba(33, 35, 38, 1) 0px 5px 5px -5px",
             },
           },
         },
