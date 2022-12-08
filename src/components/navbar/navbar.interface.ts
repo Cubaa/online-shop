@@ -4,6 +4,6 @@ export interface INavMenuItem {
 }
 
 export interface INavbarProps {
-  handleDrawerToggle: () => void;
+  handleMobileMenuToggle: () => void;
   mobileOpen: boolean;
 }

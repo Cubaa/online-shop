@@ -8,7 +8,7 @@ export const desktopMenuTheme = createTheme({
           flexGrow: 1,
           display: { xs: "none", md: "flex" },
           justifyContent: "flex-end",
-          gap: "10px",
+          gap: "5px",
         },
       },
     },

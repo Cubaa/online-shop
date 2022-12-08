@@ -1,5 +1,5 @@
-import { Box } from "@mui/material";
 import React, { FC } from "react";
+import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export const Logo: FC = () => {
@@ -9,19 +9,11 @@ export const Logo: FC = () => {
     <Box
       component="img"
       sx={{
-        content: {
-          xs: "url(/os-big-logo.svg)",
-          md: "url(/os-small-logo.svg)",
-          lg: "url(/os-big-logo.svg)",
-        },
+        content: "url(/os-small-logo.svg)",
         cursor: "pointer",
       }}
       alt="logo"
-      width={{
-        xs: "150px",
-        md: "50px",
-        lg: "150px",
-      }}
+      width="50px"
       onClick={() => navigate("/")}
     ></Box>
   );
