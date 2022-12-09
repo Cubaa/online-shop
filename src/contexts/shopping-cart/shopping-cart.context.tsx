@@ -22,10 +22,12 @@ export const ShoppingCartProvider: FC<IShoppingCartProps> = (props) => {
 
   const addProductToCart = (product: IProduct) => {
     setshoppingCart((cart) => {
-      const isExist = removeDuplicate(product, cart);
-      if (isExist) {
-        const el = cart.find((item: IProduct) => item.title === product.title);
-        if (el !== undefined) el.quantity += 1;
+      const isExists = findDuplicate(product, cart);
+      if (isExists) {
+        const foundProduct = cart.find(
+          (item: IProduct) => item.title === product.title
+        );
+        if (foundProduct !== undefined) foundProduct.quantity += 1;
         return [...cart];
       }
       product.quantity = 1;
@@ -35,7 +37,7 @@ export const ShoppingCartProvider: FC<IShoppingCartProps> = (props) => {
     setTotal((sum) => sum + product.price);
   };
 
-  const removeDuplicate = (product: IProduct, cart: IProduct[]) => {
+  const findDuplicate = (product: IProduct, cart: IProduct[]) => {
     const isExist = cart.some((item: IProduct) => {
       return item.title === product.title;
     });
