@@ -38,10 +38,10 @@ export const ShoppingCartProvider: FC<IShoppingCartProps> = (props) => {
   };
 
   const findDuplicate = (product: IProduct, cart: IProduct[]) => {
-    const isExist = cart.some((item: IProduct) => {
+    const isExists = cart.some((item: IProduct) => {
       return item.title === product.title;
     });
-    return isExist;
+    return isExists;
   };
 
   const openShopppingCart = () => {
